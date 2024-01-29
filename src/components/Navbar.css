@@ -1,0 +1,23 @@
+#mega-menu-full {
+  z-index: 0;
+  transform: translateY(-10%);
+  opacity: 0; /* Start from fully transparent */
+  visibility: hidden;
+  transition: transform 500ms ease-out, opacity 500ms ease-out; /* Animate both transform and opacity */
+  will-change: transform, opacity; /* Optimize for both animations */
+}
+
+#mega-menu-full.open {
+  z-index: 0;
+  transform: translateY(0);
+  opacity: 1; /* Fade in to fully opaque */
+  visibility: visible;
+  will-change: transform, opacity; /* Optimize for both animations */
+}
+
+#mega-menu-full.closed {
+  z-index: 0;
+  transform: translateY(-10%);
+  opacity: 0; /* Fade out to fully transparent */
+  visibility: hidden;
+}
