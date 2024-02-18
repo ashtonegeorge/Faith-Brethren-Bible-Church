@@ -1,21 +1,50 @@
-import { Suspense } from "react";
+import { Suspense, cache } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
-import { getFeaturedSermons, getEvents } from "../../sanity/sanity-utils.js";
 import { Loading, Navbar, Footer, SermonBlock, EventBlock } from "@/components";
 import desktopSplash from "/public/desktopsplash.png";
 import mobileSplash from "/public/mobilesplash.png";
 import PastorJim from "/public/pastorjim.png";
 import Pulpit from "/public/pulpit.jpg";
 
-// revalidate the data every 24 hours in case content is updated
-export const revalidate = 86400;
-export const runtime = 'nodejs';
+// get featured sermons using api route with cache disabled (to ensure most recent data is fetched)
+async function getFeaturedSermons() {
+  const response = await fetch("https://www.faithbrethrenbiblechurch.com/api/featuredSermons", { cache: "no-store" }); // get featured sermons
+    
+    // validate the response
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  // parse the response body as JSON and return it
+  const data = await response.json();
+  return data;
+}
+
+// get events using api route with cache disabled (to ensure most recent data is fetched)
+async function getEvents() {
+  const response = await fetch("https://www.faithbrethrenbiblechurch.com/api/events", { cache: "no-store" }); // get events using api route with cache disabled (to ensure most recent data is fetched)
+
+  // validate the response
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  // parse the response body as JSON and return it
+  const data = await response.json();
+  return data;
+}
 
 // get a list of featured sermon objects and map it to a list of sermon blocks
 async function FeaturedSermons() {
-  const featuredSermons = await getFeaturedSermons();
+  const response = await getFeaturedSermons();
+  let featuredSermons;
+  if(response) {
+    featuredSermons = response.featuredSermons;
+  } else {
+    featuredSermons = [];
+  }
   return (
     <ul className="grid md:grid-cols-3 grid-cols-1 md:grid-rows-1 grid-rows-3 justify-evenly w-full">
       {featuredSermons.map((sermon) => (
@@ -31,7 +60,13 @@ async function FeaturedSermons() {
 
 // get a list of event objects and map it to a list of event blocks
 async function Events() {
-  const events = await getEvents();
+  const response = await getEvents();
+  let events;
+  if(response) {
+    events = response.events;
+  } else {
+    events = [];
+  }
   return (
     <ul className="grid grid-cols-1 md:grid-rows-3 w-full items-stretch justify-items-stretch">
       {events.map((event) => (
@@ -98,7 +133,7 @@ export default async function Home() {
                 Welcome to <br/> Faith Brethren Bible Church!
               </h1>
               <h2 className="2xl:text-2xl xl:text-xl sm:text-xl text-md text-center">
-                120 Chestnut Ridge Rd, Schellsburg PA
+                120 Chestnut Ridge Rd, New Paris PA
               </h2>
             </div>
           </div>
@@ -144,6 +179,7 @@ export default async function Home() {
               src={Pulpit}
               alt="Landscape view of Pulpit within the Sanctuary"
               className="shadow-sm shadow-slate-500 aspect-auto rounded-sm"
+              priority
             />
           </div>
         </div>

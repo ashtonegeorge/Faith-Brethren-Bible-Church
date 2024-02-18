@@ -24,13 +24,13 @@ export default function Footer() {
             <h3 className="text-slate-100 font-bold text-center md:text-xl">Service Times</h3>
             <p className="text-slate-100 font-bold text-center md:text-lg">Sunday School: 9:30 AM</p>
             <p className="text-slate-100 font-bold text-center md:text-lg">Sunday Worship: 10:30 AM</p>
-            <p className="text-slate-100 font-bold text-center md:text-lg">Sunday Evening: 6:00 PM</p>
+            <p className="text-slate-100 font-bold text-center md:text-lg">Sunday Evening: 7:00 PM</p>
             <p className="text-slate-100 font-bold text-center md:text-lg">Wednesday Evening: 7:00 PM</p> 
           </div>
           <div className="px-8 md:w-1/2">
             <h3 className="text-slate-100 font-bold text-center md:text-xl">Contact Us</h3>
             <p className="text-slate-100 font-bold text-center md:text-lg">Phone: (814) 733-4336</p>
-            <p className="text-slate-100 font-bold text-center md:text-lg">Address: 120 Chestnut Ridge Rd , Schellsburg PA</p>
+            <p className="text-slate-100 font-bold text-center md:text-lg">Address: 120 Chestnut Ridge Rd , New Paris PA</p>
           </div>
         </div>
       </div>

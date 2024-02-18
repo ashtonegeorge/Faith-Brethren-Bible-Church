@@ -1,4 +1,5 @@
 import { defineConfig } from 'sanity';
+import { structureTool } from 'sanity/structure'; // Replace 'deskTool' with 'structureTool'
 import schemas from './sanity/schemas';
 
 const config = defineConfig({
@@ -7,7 +8,7 @@ const config = defineConfig({
   title: 'Faith Brethren Bible Church',
   apiVersion: '2023-12-19',
   basePath: '/admin',
-  plugins: [],
+  plugins: [structureTool()], // Replace 'deskTool' with 'structureTool'
   schema: { types: schemas }
 });
 

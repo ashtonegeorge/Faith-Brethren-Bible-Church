@@ -11,8 +11,8 @@ export async function sendPrayerRequest(formData) {
   const prayerRequest = formData.get('prayerRequest');
 
   const msg = {
-    to: 'ashtongeorge17@gmail.com',
-    from: 'ashtonsmail@icloud.com',
+    to: 'breasenni@hotmail.com',
+    from: 'ashtongeorge17@gmail.com',
     subject: 'Incoming Prayer Request for ' + name,
     text: `Name: ${name}\nPrayer Request: ${prayerRequest}`,
     html: `

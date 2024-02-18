@@ -3,7 +3,7 @@ import Link from 'next/link'
  
 export default function NotFound() {
   return (
-    <main className=''>
+    <main className='bg-slate-100'>
       <Navbar />
       <div className='min-h-[75vh] flex justify-center text-center items-center'>
         <div className='block'>

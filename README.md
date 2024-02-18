@@ -28,6 +28,7 @@ This is the source code for a website I developed for a local church. The websit
 ## Takeaways from the development of this website:
 - I had to learn how to create api routes in Next JS to handle the prayer request form submission
 - I had to learn various cost effective ways to host the website and deploy it with audio streaming capabilities
+- I had to learn how browser caching works in NextJS 13, ensuring the newest content is served on every visit with maximum performance
 - I had to learn how to handle page routing in Next JS 13
 - I had to learn how to use parameters to dynamically generate pages in Next JS
 - I had to learn how to design schema types and query data in Sanity.io CMS using GROQ

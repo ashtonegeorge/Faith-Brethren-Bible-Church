@@ -1,3 +1,4 @@
+import { revalidate } from '@/app/page';
 import { createClient, groq } from 'next-sanity';
 
 /* Sermon Queries */
@@ -64,7 +65,10 @@ export async function getFeaturedSermons() {
           url
         }
       },
-    }`
+    }`,
+    { 
+      cache: "no-store",
+    }
   )
 }
 
